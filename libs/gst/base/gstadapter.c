@@ -225,7 +225,10 @@ gst_adapter_finalize (GObject * object)
 {
   GstAdapter *adapter = GST_ADAPTER (object);
 
-  g_free (adapter->assembled_data);
+  if (adapter->assembled_size) {
+    g_free (adapter->assembled_data);
+    adapter->assembled_size = NULL;
+  }
 
   GST_CALL_PARENT (G_OBJECT_CLASS, finalize, (object));
 }

@@ -375,6 +375,7 @@ gst_structure_free (GstStructure * structure)
   guint i, len;
 
   g_return_if_fail (structure != NULL);
+  g_return_if_fail (GST_IS_STRUCTURE (structure));
   g_return_if_fail (GST_STRUCTURE_REFCOUNT (structure) == NULL);
 
   len = GST_STRUCTURE_FIELDS (structure)->len;
